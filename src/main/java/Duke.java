@@ -84,6 +84,23 @@ public class Duke {
                     } finally {
                         break;
                     }
+                case "delete":
+                    try {
+                        int index = Integer.parseInt(input[1]) - 1;
+                        System.out.println("    Noted. I've removed this task:");
+                        System.out.println("      " + list.get(index).getTaskDisplay());
+                        list.remove(index);
+                        System.out.println("    Now you have " + list.size() + " task"
+                                + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! The task you referred to is not on the list.");
+                        System.out.println("    Please refer to the list using the 'list' command.");
+                    } catch (NumberFormatException e) {
+                        System.out.println("    Oops! The 'delete' command must be followed by " +
+                                "a task number.");
+                    } finally {
+                        break;
+                    }
                 default:
                     System.out.println("    Oops! I'm sorry, but I don't know what that means :(");
                     break;

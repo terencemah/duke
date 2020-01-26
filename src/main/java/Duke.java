@@ -25,36 +25,65 @@ public class Duke {
                     }
                     break;
                 case "todo":
-                    Task todo = new ToDo(input[1]);
-                    list.add(todo);
-                    System.out.println("    Got it. I've added this task:");
-                    System.out.println("      " + todo.getTaskDisplay());
-                    System.out.println("    Now you have " + list.size() + " task"
-                            + ((list.size() == 1) ? "" : "s") + " in the list.");
-                    break;
+                    try {
+                        Task todo = new ToDo(input[1]);
+                        list.add(todo);
+                        System.out.println("    Got it. I've added this task:");
+                        System.out.println("      " + todo.getTaskDisplay());
+                        System.out.println("    Now you have " + list.size() + " task"
+                                + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! The description of a todo cannot be empty.");
+                    } finally {
+                        break;
+                    }
                 case "deadline":
-                    String[] details = input[1].split(" /by ", 2);
-                    Task deadline = new Deadline(details[0], details[1]);
-                    list.add(deadline);
-                    System.out.println("    Got it. I've added this task:");
-                    System.out.println("      " + deadline.getTaskDisplay());
-                    System.out.println("    Now you have " + list.size() + " task"
-                            + ((list.size() == 1) ? "" : "s") + " in the list.");
-                    break;
+                    try {
+                        String[] details = input[1].split(" /by ", 2);
+                        Task deadline = new Deadline(details[0], details[1]);
+                        list.add(deadline);
+                        System.out.println("    Got it. I've added this task:");
+                        System.out.println("      " + deadline.getTaskDisplay());
+                        System.out.println("    Now you have " + list.size() + " task"
+                                + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! A deadline must contain both a task " +
+                                "description and a deadline.");
+                    } finally {
+                        break;
+                    }
                 case "event":
-                    details = input[1].split(" /at ", 2);
-                    Task event = new Event(details[0], details[1]);
-                    list.add(event);
-                    System.out.println("    Got it. I've added this task:");
-                    System.out.println("      " + event.getTaskDisplay());
-                    System.out.println("    Now you have " + list.size() + " task"
-                            + ((list.size() == 1) ? "" : "s") + " in the list.");
-                    break;
+                    try {
+                        String[] details = input[1].split(" /at ", 2);
+                        Task event = new Event(details[0], details[1]);
+                        list.add(event);
+                        System.out.println("    Got it. I've added this task:");
+                        System.out.println("      " + event.getTaskDisplay());
+                        System.out.println("    Now you have " + list.size() + " task"
+                                + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! An event must contain both an event " +
+                                "description and event time.");
+                    } finally {
+                        break;
+                    }
                 case "done":
-                    int index = Integer.parseInt(input[1]) - 1;
-                    list.get(index).markDone();
-                    System.out.println("    Nice! I've marked this task as done:");
-                    System.out.println("      " + list.get(index).getTaskDisplay());
+                    try {
+                        int index = Integer.parseInt(input[1]) - 1;
+                        list.get(index).markDone();
+                        System.out.println("    Nice! I've marked this task as done:");
+                        System.out.println("      " + list.get(index).getTaskDisplay());
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! The task you referred to is not on the list.");
+                        System.out.println("    Please refer to the list using the 'list' command.");
+                    } catch (NumberFormatException e) {
+                        System.out.println("    Oops! The 'done' command must be followed by " +
+                                "a task number.");
+                    } finally {
+                        break;
+                    }
+                default:
+                    System.out.println("    Oops! I'm sorry, but I don't know what that means :(");
                     break;
             }
 

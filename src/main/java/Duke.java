@@ -49,8 +49,8 @@ public class Duke {
                         System.out.println("    Now you have " + list.size() + " task"
                                 + ((list.size() == 1) ? "" : "s") + " in the list.");
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.println("    Oops! A deadline must contain both a task " +
-                                "description and a deadline.");
+                        System.out.println("    Oops! A deadline must contain both a task "
+                                + "description and a deadline.");
                     } finally {
                         break;
                     }
@@ -64,8 +64,8 @@ public class Duke {
                         System.out.println("    Now you have " + list.size() + " task"
                                 + ((list.size() == 1) ? "" : "s") + " in the list.");
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.println("    Oops! An event must contain both an event " +
-                                "description and event time.");
+                        System.out.println("    Oops! An event must contain both an event "
+                                + "description and event time.");
                     } finally {
                         break;
                     }
@@ -87,9 +87,9 @@ public class Duke {
                 case "delete":
                     try {
                         int index = Integer.parseInt(input[1]) - 1;
+                        Task toDelete = list.remove(index);
                         System.out.println("    Noted. I've removed this task:");
-                        System.out.println("      " + list.get(index).getTaskDisplay());
-                        list.remove(index);
+                        System.out.println("      " + toDelete.getTaskDisplay());
                         System.out.println("    Now you have " + list.size() + " task"
                                 + ((list.size() == 1) ? "" : "s") + " in the list.");
                     } catch (IndexOutOfBoundsException e) {

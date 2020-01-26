@@ -47,8 +47,8 @@ public class Duke {
                         System.out.println("    Now you have " + list.size() + " task"
                                 + ((list.size() == 1) ? "" : "s") + " in the list.");
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.println("    Oops! A deadline must contain both a task " +
-                                "description and a deadline.");
+                        System.out.println("    Oops! A deadline must contain both a task "
+                                + "description and a deadline.");
                     } finally {
                         break;
                     }
@@ -62,8 +62,8 @@ public class Duke {
                         System.out.println("    Now you have " + list.size() + " task"
                                 + ((list.size() == 1) ? "" : "s") + " in the list.");
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.println("    Oops! An event must contain both an event " +
-                                "description and event time.");
+                        System.out.println("    Oops! An event must contain both an event "
+                                + "description and event time.");
                     } finally {
                         break;
                     }
@@ -77,8 +77,25 @@ public class Duke {
                         System.out.println("    Oops! The task you referred to is not on the list.");
                         System.out.println("    Please refer to the list using the 'list' command.");
                     } catch (NumberFormatException e) {
-                        System.out.println("    Oops! The 'done' command must be followed by " +
-                                "a task number.");
+                        System.out.println("    Oops! The 'done' command must be followed by "
+                                + "a task number.");
+                    } finally {
+                        break;
+                    }
+                case "delete":
+                    try {
+                        int index = Integer.parseInt(input[1]) - 1;
+                        Task toDelete = list.remove(index);
+                        System.out.println("    Noted. I've removed this task:");
+                        System.out.println("      " + toDelete.getTaskDisplay());
+                        System.out.println("    Now you have " + list.size() + " task"
+                                + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("    Oops! The task you referred to is not on the list.");
+                        System.out.println("    Please refer to the list using the 'list' command.");
+                    } catch (NumberFormatException e) {
+                        System.out.println("    Oops! The 'delete' command must be followed by "
+                                + "a task number.");
                     } finally {
                         break;
                     }

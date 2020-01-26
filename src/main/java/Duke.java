@@ -21,20 +21,41 @@ public class Duke {
                     System.out.println("    Here are the tasks in your list:");
                     int listLength = list.size();
                     for (int i = 0; i < listLength; i++) {
-                        System.out.println("    " + (i + 1) + ".[" + list.get(i).getStatusIcon()
-                                + "] " + list.get(i).getName());
+                        System.out.println("    " + (i + 1) + "." + list.get(i).getTaskDisplay());
                     }
+                    break;
+                case "todo":
+                    Task todo = new ToDo(input[1]);
+                    list.add(todo);
+                    System.out.println("    Got it. I've added this task:");
+                    System.out.println("      " + todo.getTaskDisplay());
+                    System.out.println("    Now you have " + list.size() + " task"
+                            + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    break;
+                case "deadline":
+                    String[] details = input[1].split(" /by ", 2);
+                    Task deadline = new Deadline(details[0], details[1]);
+                    list.add(deadline);
+                    System.out.println("    Got it. I've added this task:");
+                    System.out.println("      " + deadline.getTaskDisplay());
+                    System.out.println("    Now you have " + list.size() + " task"
+                            + ((list.size() == 1) ? "" : "s") + " in the list.");
+                    break;
+                case "event":
+                    details = input[1].split(" /at ", 2);
+                    Task event = new Event(details[0], details[1]);
+                    list.add(event);
+                    System.out.println("    Got it. I've added this task:");
+                    System.out.println("      " + event.getTaskDisplay());
+                    System.out.println("    Now you have " + list.size() + " task"
+                            + ((list.size() == 1) ? "" : "s") + " in the list.");
                     break;
                 case "done":
                     int index = Integer.parseInt(input[1]) - 1;
-                    list.get(index).setDone();
+                    list.get(index).markDone();
                     System.out.println("    Nice! I've marked this task as done:");
-                    System.out.println("      [" + list.get(index).getStatusIcon()
-                            + "] " + list.get(index).getName());
+                    System.out.println("      " + list.get(index).getTaskDisplay());
                     break;
-                default:
-                    list.add(new Task(command));
-                    System.out.println("    added: " + command);
             }
 
             command = br.readLine();

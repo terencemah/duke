@@ -1,4 +1,13 @@
 public class Parser {
+    /**
+     * Parses the user input and processes the commands accordingly.
+     * Returns false to exit the program loop if the command is "bye",
+     * and returns true otherwise.
+     *
+     * @param input Input string entered by user.
+     * @param list Working task list of the program, for updating.
+     * @return false if user input is "bye", and true otherwise.
+     */
     public boolean parse(String input, TaskList list) {
         String[] commands = input.split(" ", 2);
         switch (commands[0]) {
@@ -79,16 +88,33 @@ public class Parser {
         }
         return true;
     }
+
+    /**
+     * Prints the message for whenever the user adds a task.
+     * The message tells the user that the task has been added
+     * and displays the task just added.
+     *
+     * @param task Task that was added.
+     * @param list Working task list, for printing reference.
+     */
     private void printAdded(Task task, TaskList list) {
         System.out.println("    Got it. I've added this task:");
         System.out.println("      " + task.getTaskDisplay());
         System.out.println("    Now you have " + list.size() + " task"
                 + ((list.size() == 1) ? "" : "s") + " in the list.");
     }
+
+    /**
+     * Prints a message to notify user of an invalid command.
+     */
     private void printIndexException() {
         System.out.println("    Oops! The task you referred to is not on the list.");
         System.out.println("    Please refer to the list using the 'list' command.");
     }
+
+    /**
+     * Prints a message to notify user of an invalid command.
+     */
     private void printNumFormatException() {
         System.out.println("    Oops! The 'done' command must be followed by "
                 + "a task number.");

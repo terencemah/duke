@@ -9,6 +9,15 @@ public class Deadline extends Task {
     protected LocalDate date;
     protected LocalTime time;
 
+    /**
+     * Creates a Deadline representing the task the user
+     * wishes to store. If the deadline is entered in a
+     * recognisable format, then the deadline is stored
+     * as a date and time rather than simply a String.
+     *
+     * @param name Name of task to be completed.
+     * @param input Deadline of task.
+     */
     public Deadline(String name, String input) {
         super(name);
 
@@ -43,9 +52,21 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Formats the Deadline task for display to the user.
+     *
+     * @return The output string to be displayed.
+     */
     public String getTaskDisplay() {
         return "[D][" + getStatusIcon() + "] " + name + " (by: " + deadline + ")";
     }
+
+    /**
+     * Formats the Deadline task as it is to be stored/saved
+     * on the hard disk.
+     *
+     * @return The string the task is to be saved as.
+     */
     public String getSaveDisplay() {
         return "D|" + (isDone ? "1" : "0") + "|" + name + "|" + deadline + "\n";
     }

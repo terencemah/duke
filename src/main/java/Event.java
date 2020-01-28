@@ -9,6 +9,15 @@ public class Event extends Task {
     protected LocalDate date;
     protected LocalTime time;
 
+    /**
+     * Creates an Event Task representing the event the user
+     * wishes to store. If the event date/time is entered in a
+     * recognisable format, then the event date/time is stored
+     * as a date and time rather than simply a String.
+     *
+     * @param name Name of event.
+     * @param input Date and time of event.
+     */
     public Event(String name, String input) {
         super(name);
 
@@ -43,9 +52,21 @@ public class Event extends Task {
         }
     }
 
+    /**
+     * Formats the Event task for display to the user.
+     *
+     * @return The output string to be displayed.
+     */
     public String getTaskDisplay() {
         return "[E][" + getStatusIcon() + "] " + name + " (at: " + eventTime + ")";
     }
+
+    /**
+     * Formats the Event task as it is to be stored/saved
+     * on the hard disk.
+     *
+     * @return The string the task is to be saved as.
+     */
     public String getSaveDisplay() {
         return "E|" + (isDone ? "1" : "0") + "|" + name + "|" + eventTime + "\n";
     }

@@ -12,6 +12,13 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads a previously saved task list from the hard disk
+     * upon starting up the program.
+     *
+     * @param list Working task list of the program, for loading the saved data onto.
+     * @throws FileNotFoundException If the file specified by the filepath cannot be found.
+     */
     public void load(TaskList list) throws FileNotFoundException {
         File f = new File(filePath);
         Scanner sc = new Scanner(f);
@@ -40,6 +47,14 @@ public class Storage {
             list.add(newTask);
         }
     }
+
+    /**
+     * Saves any changes to the task list to the hard disk
+     * immediately by overwriting the original file.
+     *
+     * @param list Updated working task list of the program, for rewriting the file with.
+     * @throws IOException If an error occurs in writing the file.
+     */
     public void save(TaskList list) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         String textToWrite = "";

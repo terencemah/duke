@@ -5,20 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
 public class Event extends Task {
-<<<<<<< HEAD
-    protected String eventTime;
-=======
-<<<<<<< Updated upstream
-    protected String time;
->>>>>>> branch-Level-8
 
-    public Event(String name, String eventTime) {
-        super(name);
-<<<<<<< HEAD
-        this.eventTime = eventTime;
-=======
-        this.time = time;
-=======
     protected String eventTime;
     protected LocalDate date;
     protected LocalTime time;
@@ -55,8 +42,6 @@ public class Event extends Task {
         } else {
             eventTime = input;
         }
->>>>>>> Stashed changes
->>>>>>> branch-Level-8
     }
 
     public String getTaskDisplay() {

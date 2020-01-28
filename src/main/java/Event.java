@@ -5,7 +5,6 @@ import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
 public class Event extends Task {
-
     protected String eventTime;
     protected LocalDate date;
     protected LocalTime time;

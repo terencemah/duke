@@ -1,7 +1,9 @@
-import java.io.*;
+package main.java;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Duke {
 
@@ -9,7 +11,6 @@ public class Duke {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         ArrayList<Task> list = new ArrayList<>(100);
-        load("./data/duke.txt", list);
 
         System.out.println("    Hello! I'm Duke");
         System.out.println("    What can I do for you?");
@@ -105,52 +106,10 @@ public class Duke {
                     break;
             }
 
-            save("./data/duke.txt", list);
             command = br.readLine();
             input = command.split(" ", 2);
         }
 
         System.out.println("    Bye. Hope to see you again soon!");
-    }
-
-    private static void load(String filePath, ArrayList<Task> list)
-            throws FileNotFoundException, IOException {
-        File f = new File(filePath);
-        Scanner sc = new Scanner(f);
-
-        while (sc.hasNextLine()) {
-            String nextLine = sc.nextLine();
-            StringTokenizer st = new StringTokenizer(nextLine, "|");
-            String taskType = st.nextToken();
-            String taskDone = st.nextToken();
-
-            Task newTask;
-            switch (taskType) {
-            case "D":
-                newTask = new Deadline(st.nextToken(), st.nextToken());
-                break;
-            case "E":
-                newTask = new Event(st.nextToken(), st.nextToken());
-                break;
-            default:
-                newTask = new ToDo(st.nextToken());
-                break;
-            }
-            if (taskDone.equals("1")) {
-                newTask.markDone();
-            }
-            list.add(newTask);
-        }
-    }
-
-    private static void save(String filePath, ArrayList<Task> list) throws IOException {
-        FileWriter fw = new FileWriter(filePath);
-        String textToWrite = "";
-        int listLength = list.size();
-        for (int i = 0; i < listLength; i++) {
-            textToWrite = textToWrite + list.get(i).getSaveDisplay();
-        }
-        fw.write(textToWrite);
-        fw.close();
     }
 }

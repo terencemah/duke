@@ -1,0 +1,5 @@
+T|0|read book
+T|0|write book
+T|1|burn book
+D|0|essay|29th Jan 3pm
+E|1|driving class|29th Jan 4pm

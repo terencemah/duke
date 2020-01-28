@@ -8,6 +8,7 @@ public abstract class Task {
     }
 
     public abstract String getTaskDisplay();
+    public abstract String getSaveDisplay();
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718");
     }

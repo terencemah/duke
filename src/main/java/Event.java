@@ -9,4 +9,7 @@ public class Event extends Task {
     public String getTaskDisplay() {
         return "[E][" + getStatusIcon() + "] " + name + " (at: " + time + ")";
     }
+    public String getSaveDisplay() {
+        return "E|" + (isDone ? "1" : "0") + "|" + name + "|" + time + "\n";
+    }
 }

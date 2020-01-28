@@ -9,4 +9,7 @@ public class Deadline extends Task {
     public String getTaskDisplay() {
         return "[D][" + getStatusIcon() + "] " + name + " (by: " + deadline + ")";
     }
+    public String getSaveDisplay() {
+        return "D|" + (isDone ? "1" : "0") + "|" + name + "|" + deadline + "\n";
+    }
 }

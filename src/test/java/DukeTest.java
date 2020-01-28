@@ -1,9 +1,5 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import main.java.Event;
-import main.java.Deadline;
-import main.java.Parser;
-import main.java.TaskList;
 
 public class DukeTest {
     @Test

@@ -15,4 +15,7 @@ public abstract class Task {
     public void markDone() {
         isDone = true;
     }
+    public String getName() {
+        return name;
+    }
 }

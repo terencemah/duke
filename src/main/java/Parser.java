@@ -73,6 +73,19 @@ public class Parser {
             } finally {
                 break;
             }
+        case "find":
+            try {
+                System.out.println("    Here are the matching tasks in your list:");
+                int listSize = list.size();
+                for (int i = 0; i < listSize; i++) {
+                    if (list.get(i).getName().contains(commands[1])) {
+                        System.out.println("    " + (i + 1) + "." + list.get(i).getTaskDisplay());
+                    }
+                }
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("    Oops! A 'find' command must be followed by a search word.");
+            }
+            break;
         default:
             System.out.println("    Oops! I'm sorry, but I don't know what that means :(");
             break;

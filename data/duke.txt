@@ -1,0 +1,5 @@
+T|0|read book
+T|0|write book
+T|1|burn book
+D|0|essay|Jan 29 2020 3.00pm
+E|1|driving class|Jan 29 2020 3.00pm

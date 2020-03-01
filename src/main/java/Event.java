@@ -58,7 +58,8 @@ public class Event extends Task {
      * @return The output string to be displayed.
      */
     public String getTaskDisplay() {
-        return "[E][" + getStatusIcon() + "] " + name + " (at: " + eventTime + ")";
+        assert eventTime != null : "Missing event time";
+        return " [E][" + getStatusIcon() + "] " + name + " (at: " + eventTime + ")";
     }
 
     /**
@@ -68,6 +69,7 @@ public class Event extends Task {
      * @return The string the task is to be saved as.
      */
     public String getSaveDisplay() {
+        assert eventTime != null : "Missing event time";
         return "E|" + (isDone ? "1" : "0") + "|" + name + "|" + eventTime + "\n";
     }
 }

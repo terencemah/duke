@@ -9,7 +9,7 @@ public class ToDo extends Task {
      * @return The output string to be displayed.
      */
     public String getTaskDisplay() {
-        return "[T][" + getStatusIcon() + "] " + name;
+        return " [T][" + getStatusIcon() + "] " + name;
     }
 
     /**

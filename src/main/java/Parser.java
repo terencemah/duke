@@ -19,10 +19,11 @@ public class Parser {
      * @return false if user input is "bye", and true otherwise.
      */
     public String parseCommand(String input, TaskList list) {
+        assert !input.equals("") : "Empty input";
         String response = "";
 
         String[] commands = input.split(" ", 2);
-        switch (commands[0]) {
+        switch (commands[0].toLowerCase()) {
         case "bye":
             response += ui.getExitMessage();
             break;

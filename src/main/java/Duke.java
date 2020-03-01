@@ -29,6 +29,7 @@ public class Duke {
     }
 
     public String getResponse(String command) {
+        assert !command.equals("") : "Empty input";
         String response = parser.parseCommand(command, tasks);
         storage.save(tasks);
         return response;

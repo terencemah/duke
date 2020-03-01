@@ -58,7 +58,8 @@ public class Deadline extends Task {
      * @return The output string to be displayed.
      */
     public String getTaskDisplay() {
-        return "[D][" + getStatusIcon() + "] " + name + " (by: " + deadline + ")";
+        assert deadline != null : "Missing deadline";
+        return " [D][" + getStatusIcon() + "] " + name + " (by: " + deadline + ")";
     }
 
     /**
@@ -68,6 +69,7 @@ public class Deadline extends Task {
      * @return The string the task is to be saved as.
      */
     public String getSaveDisplay() {
+        assert deadline != null : "Missing deadline";
         return "D|" + (isDone ? "1" : "0") + "|" + name + "|" + deadline + "\n";
     }
 }

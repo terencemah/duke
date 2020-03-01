@@ -1,5 +1,6 @@
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -7,8 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import java.util.TimerTask;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainWindow extends AnchorPane {
     @FXML
@@ -36,17 +37,22 @@ public class MainWindow extends AnchorPane {
         dialogContainer.getChildren().add(
                 DialogBox.getDukeDialog(duke.getWelcomeMessage(), dukeImage)
         );
+        assert dialogContainer.getChildren().size() > 0 : "Welcome message missing";
     }
 
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
+        if (input.equals("")) {
+            return;
+        }
+
         String response = duke.getResponse(input);
         userInput.clear();
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
-        );
+        Node userDialog = DialogBox.getUserDialog(input, userImage);
+        Node dukeDialog = DialogBox.getDukeDialog(response, dukeImage);
+        dialogContainer.getChildren().addAll(userDialog, dukeDialog);
+
         if (response.equals(BYE_MESSAGE)) {
             TimerTask exit = new TimerTask() {
                 @Override

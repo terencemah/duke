@@ -1,4 +1,4 @@
 T|0|read book
 T|1|write book
 T|1|burn book
-E|1|lecture|Jan 29 2020 8.00am
+D|0|Defence Essay|Mar 2 2020 11.59pm

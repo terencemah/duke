@@ -1,22 +1,21 @@
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Duke {
+    private Parser parser;
     private Storage storage;
-    private Ui ui;
     private TaskList tasks;
+
+    private final String SAVE_DIR = "./data/duke.txt";
 
     /**
      * Initialises the Duke program on startup
      * by loading the previously saved task list
      * onto the working list, if there exists one.
      * Otherwise, the working list starts empty.
-     *
-     * @param filePath Relative file path to the file the task list was previously saved in.
      */
-    public Duke(String filePath) {
-        ui = new Ui();
-        storage = new Storage(filePath);
+    public Duke() {
+        parser = new Parser();
+        storage = new Storage(SAVE_DIR);
         tasks = new TaskList();
         try {
             storage.load(tasks);
@@ -25,20 +24,13 @@ public class Duke {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new Duke("./data/duke.txt").run();
+    public String getWelcomeMessage() {
+        return parser.getWelcomeMessage();
     }
 
-    /**
-     * Runs the Duke program.
-     *
-     * @throws IOException If error is encountered in parsing user input.
-     */
-    public void run() throws IOException {
-        ui.printWelcome();
-        while (ui.parseCommand(tasks)) {
-            storage.save(tasks);
-        }
-        ui.printBye();
+    public String getResponse(String command) {
+        String response = parser.parseCommand(command, tasks);
+        storage.save(tasks);
+        return response;
     }
 }

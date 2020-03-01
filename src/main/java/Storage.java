@@ -55,14 +55,18 @@ public class Storage {
      * @param list Updated working task list of the program, for rewriting the file with.
      * @throws IOException If an error occurs in writing the file.
      */
-    public void save(TaskList list) throws IOException {
-        FileWriter fw = new FileWriter(filePath);
-        String textToWrite = "";
-        int listLength = list.size();
-        for (int i = 0; i < listLength; i++) {
-            textToWrite = textToWrite + list.get(i).getSaveDisplay();
+    public void save(TaskList list) {
+        try {
+            FileWriter fw = new FileWriter(filePath);
+            String textToWrite = "";
+            int listLength = list.size();
+            for (int i = 0; i < listLength; i++) {
+                textToWrite = textToWrite + list.get(i).getSaveDisplay();
+            }
+            fw.write(textToWrite);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        fw.write(textToWrite);
-        fw.close();
     }
 }

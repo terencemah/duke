@@ -1,4 +1,3 @@
-import main.java.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,6 +19,6 @@ public class DukeTest {
     @Test
     public void testParser() {
         TaskList dummy = new TaskList();
-        assertEquals(false, new Parser().parse("bye bye", dummy));
+        assertEquals(false, new Parser().parseCommand("bye bye", dummy));
     }
 }

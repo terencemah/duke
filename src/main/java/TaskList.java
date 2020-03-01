@@ -7,4 +7,5 @@ public class TaskList extends ArrayList<Task> {
     public TaskList(TaskList list) {
         super(list);
     }
+
 }

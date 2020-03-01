@@ -1,4 +1,4 @@
-public abstract class Task implements Cloneable {
+public abstract class Task {
     protected boolean isDone;
     protected String name;
 
@@ -29,6 +29,10 @@ public abstract class Task implements Cloneable {
     }
     public String getName() {
         return name;
+    }
+
+    public boolean isDone() {
+        return isDone;
     }
 
     public static Task duplicate(Task task) {

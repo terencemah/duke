@@ -1,3 +1,2 @@
-T|1|read book
-D|0|essay|Mar 2 2020 11.59pm
-E|0|Midterm|Mar 3 2020 4.00pm
+T|0|borrow book
+T|0|read book

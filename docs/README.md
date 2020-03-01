@@ -41,11 +41,11 @@ Example of usage:
 
 Expected outcome:
 
-`    Here are the tasks in your list:
+"    Here are the tasks in your list:
      1. [T][v] Borrow book
      2. [T][v] Read book
      3. [D][x] Essay (by: Mar 2 2020 11.59pm)
-     4. [E][x] Midterm (at: Mar 3 2020 4.00pm)'
+     4. [E][x] Midterm (at: Mar 3 2020 4.00pm)"
 
 
 
@@ -64,9 +64,9 @@ Example of usage:
 
 Expected outcome:
 
-'    Got it. I've added this task:
+"    Got it. I've added this task:
        [T][x] borrow book
-     Now you have 1 task in the list.'
+     Now you have 1 task in the list."
 
 
 
@@ -94,9 +94,9 @@ Example of usage:
 
 Expected outcome:
 
-'    Got it. I've added this task:
+"    Got it. I've added this task:
        [D][x] History Essay (by: Mar 2 2020, 11.59pm)
-     Now you have 2 tasks in the list.'
+     Now you have 2 tasks in the list."
 
 
 
@@ -124,9 +124,9 @@ Example of usage:
 
 Expected outcome:
 
-'    Got it. I've added this task:
+"    Got it. I've added this task:
        [E][x] History Midterm (at: Mar 3 2020, 4.00pm)
-     Now you have 3 tasks in the list.'
+     Now you have 3 tasks in the list."
 
 
 
@@ -149,8 +149,8 @@ Example of usage:
 
 Expected outcome:
 
-'    Nice! I've marked this task as done:
-       [T][v] borrow book'
+"    Nice! I've marked this task as done:
+       [T][v] borrow book"
 
 
 
@@ -172,9 +172,9 @@ Example of usage:
 
 Expected outcome:
 
-'    Noted. I've removed this task:
+"    Noted. I've removed this task:
        [T][v] borrow book
-     Now you have 2 tasks in the list.'
+     Now you have 2 tasks in the list."
 
 
 
@@ -193,9 +193,9 @@ Example of usage:
 
 Expected outcome:
 
-'    Here are the matching tasks in your list:
+"    Here are the matching tasks in your list:
      1. [D][x] History Essay (by: Mar 2 2020, 11.59pm)
-     2. [E][x] History Midterm (at: Mar 3 2020, 4.00pm)'
+     2. [E][x] History Midterm (at: Mar 3 2020, 4.00pm)"
 
 
 
@@ -221,10 +221,10 @@ Expected outcome:
 
 If 'list' is called again, the following will be displayed:
 
-'    Here are the tasks in your list:
+"    Here are the tasks in your list:
      1. [T][v] borrow book
      2. [D][x] History Essay (by: Mar 2 2020 11.59pm)
-     3. [E][x] History Midterm (at: Mar 3 2020 4.00pm)'
+     3. [E][x] History Midterm (at: Mar 3 2020 4.00pm)"
 
 The previous 'delete' action on Task 1 ('borrow book') has been undone.
 
@@ -245,7 +245,7 @@ Example of usage:
 
 Expected outcome:
 
-'    Bye. Hope to see you again soon!'
+"    Bye. Hope to see you again soon!"
 
 (application window closes after a 1-second delay)
 

@@ -1,6 +1,3 @@
+T|0|borrow book
 T|0|read book
-T|1|write book
-D|1|Defence Essay|Mar 2 2020 11.59pm
-T|0|go jogging
-T|1|go swimming
-E|1|dental appointment|3 Mar 2020 5pm
+D|1|essay|Mar 2 2020 11.59pm

@@ -5,6 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
 public class Deadline extends Task {
+    protected String input;
     protected String deadline;
     protected LocalDate date;
     protected LocalTime time;
@@ -21,6 +22,7 @@ public class Deadline extends Task {
     public Deadline(String name, String input) {
         super(name);
 
+        this.input = input;
         StringTokenizer st = new StringTokenizer(input);
         String dateString = st.nextToken();
         try {
@@ -71,5 +73,12 @@ public class Deadline extends Task {
     public String getSaveDisplay() {
         assert deadline != null : "Missing deadline";
         return "D|" + (isDone ? "1" : "0") + "|" + name + "|" + deadline + "\n";
+    }
+
+    public String getType() {
+        return "D";
+    }
+    public String getInput() {
+        return input;
     }
 }

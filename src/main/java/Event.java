@@ -5,6 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
 public class Event extends Task {
+    protected String input;
     protected String eventTime;
     protected LocalDate date;
     protected LocalTime time;
@@ -21,6 +22,7 @@ public class Event extends Task {
     public Event(String name, String input) {
         super(name);
 
+        this.input = input;
         StringTokenizer st = new StringTokenizer(input);
         String dateString = st.nextToken();
         try {
@@ -71,5 +73,12 @@ public class Event extends Task {
     public String getSaveDisplay() {
         assert eventTime != null : "Missing event time";
         return "E|" + (isDone ? "1" : "0") + "|" + name + "|" + eventTime + "\n";
+    }
+
+    public String getType() {
+        return "E";
+    }
+    public String getInput() {
+        return input;
     }
 }

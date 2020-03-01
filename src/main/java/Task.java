@@ -1,4 +1,4 @@
-public abstract class Task {
+public abstract class Task implements Cloneable {
     protected boolean isDone;
     protected String name;
 
@@ -9,6 +9,7 @@ public abstract class Task {
 
     public abstract String getTaskDisplay();
     public abstract String getSaveDisplay();
+    public abstract String getType();
 
     /**
      * Outputs a tick or cross symbol to indicate whether
@@ -28,5 +29,18 @@ public abstract class Task {
     }
     public String getName() {
         return name;
+    }
+
+    public static Task duplicate(Task task) {
+        switch (task.getType()) {
+        case "T":
+            return new ToDo(task.getName());
+        case "D":
+            return new Deadline(task.getName(), ((Deadline) task).getInput());
+        case "E":
+            return new Event(task.getName(), ((Event) task).getInput());
+        default:
+            return null;
+        }
     }
 }

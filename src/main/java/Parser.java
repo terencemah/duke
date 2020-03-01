@@ -1,8 +1,13 @@
+import java.util.EmptyStackException;
+import java.util.Stack;
+
 public class Parser {
     private Ui ui;
+    private Stack<TaskList> history;
 
     public Parser() {
-        this.ui = new Ui();
+        ui = new Ui();
+        history = new Stack<>();
     }
 
     public String getWelcomeMessage() {
@@ -36,16 +41,19 @@ public class Parser {
             break;
         case "todo":
             try {
+                history.push(new TaskList(list));
                 Task todo = new ToDo(commands[1]);
                 list.add(todo);
                 response += ui.getAddedMessage(todo, list);
             } catch (IndexOutOfBoundsException e) {
                 response += "    Oops! The description of a todo cannot be empty.\n";
+                history.pop();
             } finally {
                 break;
             }
         case "deadline":
             try {
+                history.push(new TaskList(list));
                 String[] details = commands[1].split(" /by ", 2);
                 Task deadline = new Deadline(details[0], details[1]);
                 list.add(deadline);
@@ -53,11 +61,13 @@ public class Parser {
             } catch (IndexOutOfBoundsException e) {
                 response += "    Oops! A deadline must contain both a task "
                         + "description and a deadline.\n";
+                history.pop();
             } finally {
                 break;
             }
         case "event":
             try {
+                history.push(new TaskList(list));
                 String[] details = commands[1].split(" /at ", 2);
                 Task event = new Event(details[0], details[1]);
                 list.add(event);
@@ -65,12 +75,20 @@ public class Parser {
             } catch (IndexOutOfBoundsException e) {
                 response += "    Oops! An event must contain both an event "
                         + "description and event time.\n";
+                history.pop();
             } finally {
                 break;
             }
         case "done":
             try {
                 int index = Integer.parseInt(commands[1]) - 1;
+
+                // to save the unmarked Task in history before marking done
+                Task clonedTask = Task.duplicate(list.get(index));
+                TaskList clonedList = new TaskList(list);
+                clonedList.set(index, clonedTask);
+                history.push(clonedList);
+
                 list.get(index).markDone();
                 response += "    Nice! I've marked this task as done:\n      "
                         + list.get(index).getTaskDisplay() + "\n";
@@ -83,6 +101,7 @@ public class Parser {
             }
         case "delete":
             try {
+                history.push(new TaskList(list));
                 int index = Integer.parseInt(commands[1]) - 1;
                 Task toDelete = list.remove(index);
                 response += "    Noted. I've removed this task:\n";
@@ -91,8 +110,10 @@ public class Parser {
                         + ((list.size() == 1) ? "" : "s") + " in the list.\n";
             } catch (IndexOutOfBoundsException e) {
                 response += ui.getIndexExceptionMessage();
+                history.pop();
             } catch (NumberFormatException e) {
                 response += ui.getNumFormatExceptionMessage();
+                history.pop();
             } finally {
                 break;
             }
@@ -107,6 +128,22 @@ public class Parser {
                 }
             } catch (IndexOutOfBoundsException e) {
                 response += "    Oops! A 'find' command must be followed by a search word.\n";
+            }
+            break;
+        case "undo":
+            try {
+                TaskList newList = new TaskList(history.pop());
+                int listSize = list.size();
+                for (int i = 0; i < listSize; i++) {
+                    list.remove(0);
+                }
+                int newListSize = newList.size();
+                for (int i = 0; i < newListSize; i++) {
+                    list.add(newList.get(i));
+                }
+                response += "    Undo successful!\n";
+            } catch (EmptyStackException e) {
+                response += "    Oops! Can't undo any further.\n";
             }
             break;
         default:

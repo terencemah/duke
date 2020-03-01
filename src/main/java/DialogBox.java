@@ -12,7 +12,10 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.util.Collections;
 
-
+/**
+ * This custom control represents a dialog box consisting of an ImageView
+ * to represent the speaker and a Label containing text from the speaker.
+ */
 public class DialogBox extends HBox {
     @FXML
     private Label dialog;
@@ -34,6 +37,10 @@ public class DialogBox extends HBox {
         displayPicture.setImage(image);
     }
 
+    /**
+     * Flips the dialog box such that the text Label is now
+     * on the right of the image.
+     */
     private void flip() {
         ObservableList<Node> temp = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(temp);

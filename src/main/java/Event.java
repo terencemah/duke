@@ -4,6 +4,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
+/**
+ * This class encompasses Events, a specific sub-type of Task objects.
+ * They comprise an event name accompanied by its event time.
+ */
 public class Event extends Task {
     protected String input;
     protected String eventTime;

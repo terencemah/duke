@@ -4,6 +4,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.StringTokenizer;
 
+/**
+ * This class encompasses Deadlines, a specific subtype of Task objects.
+ * They comprise a task name accompanied by a deadline,
+ * before which the task must be completed.
+ */
 public class Deadline extends Task {
     protected String input;
     protected String deadline;

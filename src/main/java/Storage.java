@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * This class handles the program's interaction with the save file
+ * on the disk. It is responsible for loading from the save file on
+ * initialisation, and writing any updates to the list to the save file.
+ */
 public class Storage {
     private String filePath;
 

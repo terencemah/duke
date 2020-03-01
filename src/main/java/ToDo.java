@@ -1,3 +1,8 @@
+/**
+ * This class encompasses ToDos, a specific sub-type of Task objects.
+ * They comprise only the name of a task to be completed,
+ * with no accompanying information.
+ */
 public class ToDo extends Task {
     public ToDo(String name) {
         super(name);

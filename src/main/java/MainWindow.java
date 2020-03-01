@@ -11,6 +11,10 @@ import javafx.scene.layout.VBox;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This class serves as the controller for the MainWindow
+ * FXML file, which contains the layout design of the root node.
+ */
 public class MainWindow extends AnchorPane {
     @FXML
     private ScrollPane scrollPane;
@@ -32,6 +36,12 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
+    /**
+     * Interacts with the Duke class, the main logical
+     * control centre of the program. Also initialises the
+     * application with the welcome message.
+     * @param d The Duke object running the program.
+     */
     public void setDuke(Duke d) {
         duke = d;
         dialogContainer.getChildren().add(
@@ -40,6 +50,16 @@ public class MainWindow extends AnchorPane {
         assert dialogContainer.getChildren().size() > 0 : "Welcome message missing";
     }
 
+    /**
+     * Creates two dialog boxes in response to user input -
+     * the first echoing the user's input and the second containing
+     * Duke's reply - and appends them to the dialog container.
+     * The user's input is cleared after processing.
+     * Also, the method does not respond if the text field is empty,
+     * even if the Enter key or Send button is pressed.
+     * Finally, this method closes the application when Duke
+     * outputs its goodbye message.
+     */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();

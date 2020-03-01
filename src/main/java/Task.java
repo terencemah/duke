@@ -1,3 +1,7 @@
+/**
+ * This abstract class encompasses all the different Task objects
+ * being managed by the Duke program's list.
+ */
 public abstract class Task {
     protected boolean isDone;
     protected String name;
@@ -31,10 +35,14 @@ public abstract class Task {
         return name;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
+    /**
+     * This method instantiates a new, identical copy
+     * of an existing task, to be stored in ActionHistory.
+     * This ensures that updates to the old task do not
+     * affect the copy as well.
+     * @param task The task being duplicated.
+     * @return The newly-instantiated duplicate of the original task.
+     */
     public static Task duplicate(Task task) {
         switch (task.getType()) {
         case "T":

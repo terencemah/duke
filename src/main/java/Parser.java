@@ -1,5 +1,9 @@
 import java.util.EmptyStackException;
 
+/**
+ * This class is responsible for parsing and processing
+ * the various user input commands, and then responding appropriately.
+ */
 public class Parser {
     private Ui ui;
     private ActionHistory history;
@@ -9,18 +13,20 @@ public class Parser {
         history = new ActionHistory();
     }
 
+    /**
+     * @return The welcome message on Duke's initialisation.
+     */
     public String getWelcomeMessage() {
         return ui.getWelcomeMessage();
     }
 
     /**
      * Parses the user input and processes the commands accordingly.
-     * Returns false to exit the program loop if the command is "bye",
-     * and returns true otherwise.
+     * Returns the string representing Duke's reply to the user.
      *
      * @param input Input string entered by user.
      * @param list Working task list of the program, for updating.
-     * @return false if user input is "bye", and true otherwise.
+     * @return The string representing Duke's reply to the user.
      */
     public String parseCommand(String input, TaskList list) {
         String response;
@@ -63,6 +69,11 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'list' functionality of the program.
+     * @param list The working task list.
+     * @return Duke's message listing to the user the tasks on the list.
+     */
     private String executeListCommand(TaskList list) {
         String response = "    Here are the tasks in your list:\n";
         int listLength = list.size();
@@ -72,11 +83,24 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the adding of tasks to the list.
+     * @param task The task to be added.
+     * @param list The working task list.
+     * @return The message confirming the addition of the task to the list.
+     */
     private String executeAddCommand(Task task, TaskList list) {
         list.add(task);
         return ui.getAddedMessage(task, list);
     }
 
+    /**
+     * Implements the 'to-do' functionality of the program.
+     * @param commands The array of user input commands.
+     * @param original The original task list.
+     * @param clone The clone of the task list.
+     * @return The message confirming addition of the to-do.
+     */
     private String executeTodoCommand(String[] commands, TaskList original, TaskList clone) {
         String response;
         try {
@@ -89,6 +113,13 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'deadline' functionality of the program.
+     * @param commands The array of user input commands.
+     * @param original The original task list.
+     * @param clone The clone of the task list.
+     * @return The message confirming addition of the deadline.
+     */
     private String executeDeadlineCommand(String[] commands, TaskList original, TaskList clone) {
         String response;
         try {
@@ -103,6 +134,13 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'event' functionality of the program.
+     * @param commands The array of user input commands.
+     * @param original The original task list.
+     * @param clone The clone of the task list.
+     * @return The message confirming addition of the event.
+     */
     private String executeEventCommand(String[] commands, TaskList original, TaskList clone) {
         String response;
         try {
@@ -117,6 +155,14 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'done' functionality of the program,
+     * marking a task a 'done'.
+     * @param commands The array of user input commands.
+     * @param original The original task list.
+     * @param clone The clone of the task list.
+     * @return The message confirming the task has been marked as done.
+     */
     private String executeDoneCommand(String[] commands, TaskList original, TaskList clone) {
         String response;
         try {
@@ -133,6 +179,14 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'delete' functionality of the program,
+     * removing tasks from the list.
+     * @param commands The array of user input commands.
+     * @param original The original task list.
+     * @param clone The clone of the task list.
+     * @return The message confirming deletion of the task.
+     */
     private String executeDeleteCommand(String[] commands, TaskList original, TaskList clone) {
         String response;
         try {
@@ -150,6 +204,14 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the search functionality of the program.
+     * Allows the user to search for tasks using keywords.
+     * @param commands The array of user input commands.
+     * @param list The working task list.
+     * @return Duke's reply listing the tasks matching the user's
+     *         search string.
+     */
     private String executeFindCommand(String[] commands, TaskList list) {
         String response;
         try {
@@ -166,6 +228,14 @@ public class Parser {
         return response;
     }
 
+    /**
+     * Implements the 'undo' functionality of the program.
+     * Allows a user to erase actions on the program,
+     * within the same application run.
+     * @param list The working task list.
+     * @return The message confirming whether or not the
+     *         undo was successful.
+     */
     private String executeUndoCommand(TaskList list) {
         String response;
         try {

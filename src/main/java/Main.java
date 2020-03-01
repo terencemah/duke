@@ -6,6 +6,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class runs the guided user interface
+ * of the Duke program using FXML.
+ */
 public class Main extends Application {
 
     @Override

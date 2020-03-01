@@ -16,7 +16,7 @@
 
 
 
-### Feature 1 - Displaying the Task List
+## Feature 1 - Displaying the Task List
 
    This feature is activated by the keyword 'list', and displays the status of
    all tasks currently on the list. The tasks are numbered, starting from 1,
@@ -25,7 +25,7 @@
    features which category each task belongs to (To-do, Deadline, or Event),
    the time/deadline where applicable, and also marks which tasks are completed.
 
-## Usage
+### Usage
 
    In the following example, the 'v' denotes a tick and 'x' denotes a cross.
    These symbols display whether a task has been completed.
@@ -49,12 +49,12 @@ Expected outcome:
 
 
 
-### Feature 2 - Adding a To-do
+## Feature 2 - Adding a To-do
 
    This feature is activated by the keyword 'todo', and allows the user to add a
    simple task to be completed, without any additional accompanying information.
 
-## Usage
+### Usage
 
 ### Keyword - 'todo'   (not case-sensitive)
 
@@ -70,7 +70,7 @@ Expected outcome:
 
 
 
-### Feature 3 - Adding a Deadline
+## Feature 3 - Adding a Deadline
 
    This feature is activated by the keyword 'deadline'. It allows the user to add
    an upcoming deadline, accompanied by the date and time it is due. The keyword
@@ -84,7 +84,7 @@ Expected outcome:
    If Duke successfully parses the date-time input, it outputs it in the format
    shown in the example below.
 
-## Usage
+### Usage
 
 ### Keywords - 'deadline' and ' /by '   (only ' /by ' is case-sensitive)
    
@@ -100,7 +100,7 @@ Expected outcome:
 
 
 
-### Feature 4 - Adding an Event
+## Feature 4 - Adding an Event
 
    This feature is activated by the keyword 'event'. It allows the user to add an
    upcoming event, accompanied by the date and time of the event. The keyword ' /at '
@@ -114,7 +114,7 @@ Expected outcome:
    If Duke successfully parses the date-time input, it outputs it in the format
    shown in the example below.
 
-## Usage
+### Usage
 
 ### Keywords - 'event' and ' /at '   (only ' /at ' is case-sensitive)
 
@@ -130,7 +130,7 @@ Expected outcome:
 
 
 
-### Feature 5 - Marking Tasks as 'Done'
+## Feature 5 - Marking Tasks as 'Done'
 
    This feature allows the user to mark (or check) certain Tasks as 'Done'.
    Tasks that are marked 'Done' are displayed with a tick instead of a cross
@@ -139,7 +139,7 @@ Expected outcome:
    The task to be marked as Done is referred to using its number on the list.
    This number can be easily verified using the 'list' command.
 
-## Usage
+### Usage
 
 ### Keyword - 'done'   (not case-sensitive)
 
@@ -154,7 +154,7 @@ Expected outcome:
 
 
 
-### Feature 6 - Deleting Tasks
+## Feature 6 - Deleting Tasks
 
    This feature allows the user to remove tasks from the list when they have become
    outdated or no longer relevant. It is activated using the 'delete' keyword.
@@ -162,7 +162,7 @@ Expected outcome:
    As with 'done', the task to be deleted is referred to using its number on the list.
    This number can be easily verified using the 'list' command.
 
-## Usage
+### Usage
 
 ### Keyword - 'delete'   (not case-sensitive)
 
@@ -178,12 +178,12 @@ Expected outcome:
 
 
 
-### Feature 7 - Searching for Tasks using Keywords
+## Feature 7 - Searching for Tasks using Keywords
 
    This feature allows the user to search for all tasks containing a given keyword
    in their names. It is activated using the 'find' keyword.
 
-## Usage
+### Usage
 
 ### Keyword - 'find'   (not case-sensitive, but search string is)
 
@@ -199,7 +199,7 @@ Expected outcome:
 
 
 
-### Feature 8 - Undoing Commands
+## Feature 8 - Undoing Commands
 
    This feature allows the user to undo changes to the list he/she has made in the
    current application run. It is activated by the keyword 'undo'.
@@ -207,7 +207,7 @@ Expected outcome:
    If there still is an action that can be undone, Duke outputs 'Undo successful!'
    Otherwise, Duke outputs 'Oops! Can't undo any further.'
 
-## Usage
+### Usage
 
 ### Keyword - 'undo'   (not case-sensitive)
 
@@ -230,12 +230,12 @@ The previous 'delete' action on Task 1 ('borrow book') has been undone.
 
 
 
-### Feature 9 - Exiting the Application
+## Feature 9 - Exiting the Application
 
    To exit the application, the user may use the 'bye' keyword. This causes Duke
    to output a goodbye message, and close the application window.
 
-## Usage
+### Usage
 
 ### Keyword - 'bye'   (not case-sensitive)
 

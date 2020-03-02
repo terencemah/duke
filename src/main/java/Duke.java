@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-
 /**
  * This class is the main logical control centre of the Duke program.
  * It manages both the Parser, which parses and responds to user input,
@@ -22,11 +20,7 @@ public class Duke {
         parser = new Parser();
         storage = new Storage(SAVE_DIR);
         tasks = new TaskList();
-        try {
-            storage.load(tasks);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        storage.load(tasks);
     }
 
     /**

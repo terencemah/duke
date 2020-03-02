@@ -12,44 +12,58 @@ import java.util.StringTokenizer;
  */
 public class Storage {
     private String filePath;
+    private final String DIRECTORY = "./data/";
 
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     * Loads a previously saved task list from the hard disk
-     * upon starting up the program.
+     * Loads a previously saved task list from a save file specified
+     * by the filepath upon starting up the program.
+     * If the save file does not exist, this method creates a
+     * new directory and file.
      *
      * @param list Working task list of the program, for loading the saved data onto.
-     * @throws FileNotFoundException If the file specified by the filepath cannot be found.
      */
-    public void load(TaskList list) throws FileNotFoundException {
+    public void load(TaskList list) {
         File f = new File(filePath);
-        Scanner sc = new Scanner(f);
 
-        while (sc.hasNextLine()) {
-            String nextLine = sc.nextLine();
-            StringTokenizer st = new StringTokenizer(nextLine, "|");
-            String taskType = st.nextToken();
-            String taskDone = st.nextToken();
+        try {
+            Scanner sc = new Scanner(f);
 
-            Task newTask;
-            switch (taskType) {
-                case "D":
-                    newTask = new Deadline(st.nextToken(), st.nextToken());
-                    break;
-                case "E":
-                    newTask = new Event(st.nextToken(), st.nextToken());
-                    break;
-                default:
-                    newTask = new ToDo(st.nextToken());
-                    break;
+            while (sc.hasNextLine()) {
+                String nextLine = sc.nextLine();
+                StringTokenizer st = new StringTokenizer(nextLine, "|");
+                String taskType = st.nextToken();
+                String taskDone = st.nextToken();
+
+                Task newTask;
+                switch (taskType) {
+                    case "D":
+                        newTask = new Deadline(st.nextToken(), st.nextToken());
+                        break;
+                    case "E":
+                        newTask = new Event(st.nextToken(), st.nextToken());
+                        break;
+                    default:
+                        newTask = new ToDo(st.nextToken());
+                        break;
+                }
+                if (taskDone.equals("1")) {
+                    newTask.markDone();
+                }
+                list.add(newTask);
             }
-            if (taskDone.equals("1")) {
-                newTask.markDone();
+        } catch (FileNotFoundException e) {
+            File directory = new File(DIRECTORY);
+            directory.mkdir();
+
+            try {
+                f.createNewFile();
+            } catch (IOException a) {
+                a.printStackTrace();
             }
-            list.add(newTask);
         }
     }
 

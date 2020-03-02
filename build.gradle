@@ -11,8 +11,8 @@ checkstyle {
 }
 
 shadowJar {
-    archiveBaseName = "duke_terence"
-    archiveVersion = "0.1.3"
+    archiveBaseName = "DukeT"
+    archiveVersion = "0.2"
     archiveClassifier = null
     archiveAppendix = null
 }
@@ -39,7 +39,7 @@ javafx {
 
 application {
     // Change this to your main class.
-    mainClassName = "Duke"
+    mainClassName = "Launcher"
 }
 
 run {
